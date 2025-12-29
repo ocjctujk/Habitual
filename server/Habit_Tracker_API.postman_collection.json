@@ -1,0 +1,546 @@
+{
+    "info": {
+        "name": "Habit Tracker API",
+        "description": "Complete API collection for Habit Tracker backend",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:5000/api"
+        },
+        {
+            "key": "token",
+            "value": ""
+        }
+    ],
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"username\": \"johndoe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/auth/register",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "register"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/auth/login",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "login"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Profile",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/auth/profile",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "profile"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Categories",
+            "item": [
+                {
+                    "name": "Create Category",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Health\",\n  \"icon_url\": \"https://example.com/health.png\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/categories",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "categories"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get All Categories",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/categories",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "categories"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Category by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/categories/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "categories",
+                                ":id"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Category",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Fitness\",\n  \"icon_url\": \"https://example.com/fitness.png\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/categories/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "categories",
+                                ":id"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Category",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/categories/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "categories",
+                                ":id"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Habits",
+            "item": [
+                {
+                    "name": "Create Habit",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Drink Water\",\n  \"description\": \"Drink 8 glasses of water\",\n  \"frequency\": \"daily\",\n  \"target_value\": 8\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/habits",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "habits"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get User Habits",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/habits?is_active=true",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "habits"
+                            ],
+                            "query": [
+                                {
+                                    "key": "is_active",
+                                    "value": "true"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Habit by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/habits/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "habits",
+                                ":id"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Habit",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Drink More Water\",\n  \"target_value\": 10,\n  \"is_active\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/habits/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "habits",
+                                ":id"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Habit",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/habits/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "habits",
+                                ":id"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Habit Logs",
+            "item": [
+                {
+                    "name": "Log Habit",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"habit_id\": \"uuid-here\",\n  \"completion_date\": \"2025-12-29\",\n  \"status\": \"completed\",\n  \"actual_value\": 8\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/logs",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "logs"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Habit Logs",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/logs/habit/:habit_id?start_date=2025-12-01&end_date=2025-12-31",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "logs",
+                                "habit",
+                                ":habit_id"
+                            ],
+                            "query": [
+                                {
+                                    "key": "start_date",
+                                    "value": "2025-12-01"
+                                },
+                                {
+                                    "key": "end_date",
+                                    "value": "2025-12-31"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Habit Log",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"status\": \"completed\",\n  \"actual_value\": 10\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/logs/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "logs",
+                                ":id"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Habit Log",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/logs/:id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "logs",
+                                ":id"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Streaks",
+            "item": [
+                {
+                    "name": "Get User Streaks",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/streaks",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "streaks"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Habit Streak",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/streaks/habit/:habit_id",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "streaks",
+                                "habit",
+                                ":habit_id"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Health Check",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/health",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "health"
+                    ]
+                }
+            }
+        }
+    ]
+}

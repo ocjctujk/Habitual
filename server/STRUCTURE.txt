@@ -1,0 +1,58 @@
+HABIT TRACKER API - COMPLETE DIRECTORY STRUCTURE
+================================================
+
+server/
+│
+├── 📁 src/                       # Source code
+│   ├── 📁 config/
+│   │   └── database.ts          # TypeORM PostgreSQL config
+│   │
+│   ├── 📁 entities/             # Database models
+│   │   ├── User.ts              # User accounts
+│   │   ├── Category.ts          # Habit categories
+│   │   ├── Habit.ts             # User habits
+│   │   ├── HabitLog.ts          # Daily logs
+│   │   └── UserStreak.ts        # Streak tracking
+│   │
+│   ├── 📁 controllers/          # Business logic
+│   │   ├── authController.ts    # Register/Login
+│   │   ├── categoryController.ts
+│   │   ├── habitController.ts
+│   │   ├── habitLogController.ts
+│   │   └── streakController.ts
+│   │
+│   ├── 📁 routes/               # API endpoints
+│   │   ├── authRoutes.ts
+│   │   ├── categoryRoutes.ts
+│   │   ├── habitRoutes.ts
+│   │   ├── habitLogRoutes.ts
+│   │   └── streakRoutes.ts
+│   │
+│   ├── 📁 middleware/
+│   │   └── auth.ts              # JWT authentication
+│   │
+│   └── app.ts                   # Express app entry
+│
+├── 📁 dist/                     # Compiled JavaScript (after build)
+│
+├── 📁 node_modules/             # Dependencies
+│
+├── 📄 Configuration Files
+│   ├── package.json             # Dependencies & scripts
+│   ├── package-lock.json
+│   ├── tsconfig.json            # TypeScript config
+│   ├── nodemon.json             # Dev server config
+│   ├── .env.example             # Environment template
+│   └── .gitignore
+│
+├── 📖 Documentation
+│   ├── README.md                # Full API documentation
+│   ├── QUICKSTART.md            # Quick start guide
+│   ├── ARCHITECTURE.md          # Technical architecture
+│   ├── PROJECT_SUMMARY.md       # Project overview
+│   └── STRUCTURE.txt            # This file
+│
+└── 🛠️ Tools
+    ├── setup.sh                 # Automated setup script
+    └── Habit_Tracker_API.postman_collection.json
+
