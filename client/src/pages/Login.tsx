@@ -30,7 +30,7 @@ export const Login: React.FC = () => {
       <div className="max-w-md w-full">
         <div className="card animate-slide-up">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-primary-600 mb-2">🎯 Habit Tracker</h1>
+            <h1 className="text-4xl font-bold text-primary-600 mb-2">🎯 Habitual</h1>
             <h2 className="text-2xl font-semibold text-gray-800 mb-2">Welcome Back!</h2>
             <p className="text-gray-600">Sign in to continue your journey</p>
           </div>

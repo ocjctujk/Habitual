@@ -154,7 +154,7 @@ export const Dashboard: React.FC = () => {
                 <span className="text-2xl">🎯</span>
               </div>
               <div>
-                <h1 className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Habit Tracker</h1>
+                <h1 className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Habitual</h1>
                 <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">Build your better self</p>
               </div>
             </div>
