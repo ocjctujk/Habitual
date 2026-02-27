@@ -3,6 +3,7 @@ import express, { Application } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { AppDataSource } from './config/database';
+import setupSwagger  from './config/swagger';
 
 // Import routes
 import authRoutes from './routes/authRoutes';
@@ -19,6 +20,7 @@ const app: Application = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+setupSwagger.setupSwagger(app);
 
 // Routes
 app.use('/api/auth', authRoutes);
