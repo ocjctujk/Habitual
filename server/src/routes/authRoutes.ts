@@ -1,6 +1,6 @@
-import { Router } from 'express';
-import { register, login, getProfile } from '../controllers/authController';
-import { authenticateToken } from '../middleware/auth';
+import { Router } from "express";
+import { register, login, getProfile } from "../controllers/authController";
+import { authenticateToken } from "../middleware/auth";
 
 const router = Router();
 
@@ -35,7 +35,7 @@ const router = Router();
  *       400:
  *         description: Invalid input
  */
-router.post('/register', register);
+router.post("/register", register);
 
 /**
  * @openapi
@@ -65,7 +65,7 @@ router.post('/register', register);
  *       401:
  *         description: Invalid credentials
  */
-router.post('/login', login);
+router.post("/login", login);
 
 /**
  * @openapi
@@ -83,6 +83,6 @@ router.post('/login', login);
  *       401:
  *         description: Unauthorized - invalid or missing token
  */
-router.get('/profile', authenticateToken, getProfile);
+router.get("/profile", authenticateToken, getProfile);
 
 export default router;

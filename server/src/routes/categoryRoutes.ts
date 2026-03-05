@@ -1,12 +1,12 @@
-import { Router } from 'express';
+import { Router } from "express";
 import {
-    createCategory,
-    getAllCategories,
-    getCategoryById,
-    updateCategory,
-    deleteCategory,
-} from '../controllers/categoryController';
-import { authenticateToken } from '../middleware/auth';
+  createCategory,
+  getAllCategories,
+  getCategoryById,
+  updateCategory,
+  deleteCategory,
+} from "../controllers/categoryController";
+import { authenticateToken } from "../middleware/auth";
 
 const router = Router();
 
@@ -56,8 +56,8 @@ router.use(authenticateToken);
  *       401:
  *         description: Unauthorized
  */
-router.post('/', createCategory);
-router.get('/', getAllCategories);
+router.post("/", createCategory);
+router.get("/", getAllCategories);
 
 /**
  * @openapi
@@ -134,8 +134,8 @@ router.get('/', getAllCategories);
  *       401:
  *         description: Unauthorized
  */
-router.get('/:id', getCategoryById);
-router.put('/:id', updateCategory);
-router.delete('/:id', deleteCategory);
+router.get("/:id", getCategoryById);
+router.put("/:id", updateCategory);
+router.delete("/:id", deleteCategory);
 
 export default router;
