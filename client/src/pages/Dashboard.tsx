@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import type { Habit, UserStreak, Category, HabitLog } from "../types";
 import { habitsAPI, logsAPI, streaksAPI, categoriesAPI } from "../services/api";
-import { CategoryManager } from "../components/CategoryManager";
-import { HabitHistory } from "../components/HabitHistory";
-import { ConfirmModal } from "../components/ConfirmModal";
-import { HabitCard } from "../components/HabitCard";
-import { HabitGridView } from "../components/HabitGridView";
-import { CreateHabitModal } from "../components/CreateHabitModal";
-import { LogHabitModal } from "../components/LogHabitModal";
-import { StatCard } from "../components/StatCard";
-import { Navbar } from "../components/Navbar";
+import {
+  CategoryManager,
+  HabitHistory,
+  ConfirmModal,
+  HabitCard,
+  HabitGridView,
+  CreateHabitModal,
+  LogHabitModal,
+  StatCard,
+  Navbar,
+} from "../components/index";
 
 export const Dashboard: React.FC = () => {
   // Data State
@@ -124,8 +126,8 @@ export const Dashboard: React.FC = () => {
       await habitsAPI.delete(habitId);
       refreshData();
       setConfirmModal((prev) => ({ ...prev, isOpen: false }));
-    } catch (error) {
-      alert("Failed to delete habit");
+    } catch (error: unknown) {
+      if (error instanceof Error) alert("Failed to delete habit");
     }
   };
 
@@ -140,7 +142,7 @@ export const Dashboard: React.FC = () => {
     return logsMap[habitId]?.has(today) || false;
   };
 
-  // Sort habits: Pending first, then Done
+  // Sort habits: Pending first, then  Done
   const sortedHabits = [...habits].sort((a, b) => {
     const aDone = isCompletedToday(a.habit_id);
     const bDone = isCompletedToday(b.habit_id);

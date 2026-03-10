@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import { Router } from "express";
 import {
-    logHabit,
-    getHabitLogs,
-    updateHabitLog,
-    deleteHabitLog,
-} from '../controllers/habitLogController';
-import { authenticateToken } from '../middleware/auth';
+  logHabit,
+  getHabitLogs,
+  updateHabitLog,
+  deleteHabitLog,
+} from "../controllers/habitLogController";
+import { authenticateToken } from "../middleware/auth";
 
 const router = Router();
 
@@ -46,7 +46,7 @@ router.use(authenticateToken);
  *       401:
  *         description: Unauthorized
  */
-router.post('/', logHabit);
+router.post("/", logHabit);
 
 /**
  * @openapi
@@ -72,7 +72,7 @@ router.post('/', logHabit);
  *       401:
  *         description: Unauthorized
  */
-router.get('/habit/:habit_id', getHabitLogs);
+router.get("/habit/:habit_id", getHabitLogs);
 
 /**
  * @openapi
@@ -129,7 +129,7 @@ router.get('/habit/:habit_id', getHabitLogs);
  *       401:
  *         description: Unauthorized
  */
-router.put('/:id', updateHabitLog);
-router.delete('/:id', deleteHabitLog);
+router.put("/:id", updateHabitLog);
+router.delete("/:id", deleteHabitLog);
 
 export default router;

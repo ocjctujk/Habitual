@@ -1,6 +1,9 @@
-import { Router } from 'express';
-import { getUserStreaks, getHabitStreak } from '../controllers/streakController';
-import { authenticateToken } from '../middleware/auth';
+import { Router } from "express";
+import {
+  getUserStreaks,
+  getHabitStreak,
+} from "../controllers/streakController";
+import { authenticateToken } from "../middleware/auth";
 
 const router = Router();
 
@@ -23,7 +26,7 @@ router.use(authenticateToken);
  *       401:
  *         description: Unauthorized
  */
-router.get('/', getUserStreaks);
+router.get("/", getUserStreaks);
 
 /**
  * @openapi
@@ -49,6 +52,6 @@ router.get('/', getUserStreaks);
  *       401:
  *         description: Unauthorized
  */
-router.get('/habit/:habit_id', getHabitStreak);
+router.get("/habit/:habit_id", getHabitStreak);
 
 export default router;

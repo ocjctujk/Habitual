@@ -1,12 +1,12 @@
-import { Router } from 'express';
+import { Router } from "express";
 import {
-    createHabit,
-    getUserHabits,
-    getHabitById,
-    updateHabit,
-    deleteHabit,
-} from '../controllers/habitController';
-import { authenticateToken } from '../middleware/auth';
+  createHabit,
+  getUserHabits,
+  getHabitById,
+  updateHabit,
+  deleteHabit,
+} from "../controllers/habitController";
+import { authenticateToken } from "../middleware/auth";
 
 const router = Router();
 
@@ -64,8 +64,8 @@ router.use(authenticateToken);
  *       401:
  *         description: Unauthorized
  */
-router.post('/', createHabit);
-router.get('/', getUserHabits);
+router.post("/", createHabit);
+router.get("/", getUserHabits);
 
 /**
  * @openapi
@@ -146,8 +146,8 @@ router.get('/', getUserHabits);
  *       401:
  *         description: Unauthorized
  */
-router.get('/:id', getHabitById);
-router.put('/:id', updateHabit);
-router.delete('/:id', deleteHabit);
+router.get("/:id", getHabitById);
+router.put("/:id", updateHabit);
+router.delete("/:id", deleteHabit);
 
 export default router;

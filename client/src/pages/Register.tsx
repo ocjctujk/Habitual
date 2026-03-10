@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export const Register: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { register } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match');
+      setError("Passwords do not match");
       return;
     }
 
     if (password.length < 6) {
-      setError('Password must be at least 6 characters');
+      setError("Password must be at least 6 characters");
       return;
     }
 
@@ -30,9 +30,11 @@ export const Register: React.FC = () => {
 
     try {
       await register(username, email, password);
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Registration failed. Please try again.');
+      setError(
+        err.response?.data?.message || "Registration failed. Please try again.",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -43,8 +45,12 @@ export const Register: React.FC = () => {
       <div className="max-w-md w-full">
         <div className="card animate-slide-up">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-primary-600 mb-2">🎯 Habitual</h1>
-            <h2 className="text-2xl font-semibold text-gray-800 mb-2">Create Account</h2>
+            <h1 className="text-4xl font-bold text-primary-600 mb-2">
+              🎯 Habitual
+            </h1>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+              Create Account
+            </h2>
             <p className="text-gray-600">Start building better habits today</p>
           </div>
 
@@ -56,7 +62,10 @@ export const Register: React.FC = () => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Username
               </label>
               <input
@@ -71,7 +80,10 @@ export const Register: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Email Address
               </label>
               <input
@@ -86,7 +98,10 @@ export const Register: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Password
               </label>
               <input
@@ -101,7 +116,10 @@ export const Register: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="confirmPassword"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Confirm Password
               </label>
               <input
@@ -120,14 +138,17 @@ export const Register: React.FC = () => {
               disabled={isLoading}
               className="btn-primary w-full mt-6"
             >
-              {isLoading ? 'Creating Account...' : 'Sign Up'}
+              {isLoading ? "Creating Account..." : "Sign Up"}
             </button>
           </form>
 
           <div className="mt-6 text-center">
             <p className="text-gray-600">
-              Already have an account?{' '}
-              <Link to="/login" className="text-primary-600 hover:text-primary-700 font-semibold">
+              Already have an account?{" "}
+              <Link
+                to="/login"
+                className="text-primary-600 hover:text-primary-700 font-semibold"
+              >
                 Sign in
               </Link>
             </p>

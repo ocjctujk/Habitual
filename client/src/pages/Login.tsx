@@ -1,25 +1,27 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 export const Login: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setIsLoading(true);
 
     try {
       await login(email, password);
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Login failed. Please try again.');
+      setError(
+        err.response?.data?.message || "Login failed. Please try again.",
+      );
     } finally {
       setIsLoading(false);
     }
@@ -30,8 +32,12 @@ export const Login: React.FC = () => {
       <div className="max-w-md w-full">
         <div className="card animate-slide-up">
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-primary-600 mb-2">🎯 Habitual</h1>
-            <h2 className="text-2xl font-semibold text-gray-800 mb-2">Welcome Back!</h2>
+            <h1 className="text-4xl font-bold text-primary-600 mb-2">
+              🎯 Habitual
+            </h1>
+            <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+              Welcome Back!
+            </h2>
             <p className="text-gray-600">Sign in to continue your journey</p>
           </div>
 
@@ -43,7 +49,10 @@ export const Login: React.FC = () => {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Email Address
               </label>
               <input
@@ -58,7 +67,10 @@ export const Login: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Password
               </label>
               <input
@@ -77,14 +89,17 @@ export const Login: React.FC = () => {
               disabled={isLoading}
               className="btn-primary w-full mt-6"
             >
-              {isLoading ? 'Signing in...' : 'Sign In'}
+              {isLoading ? "Signing in..." : "Sign In"}
             </button>
           </form>
 
           <div className="mt-6 text-center">
             <p className="text-gray-600">
-              Don't have an account?{' '}
-              <Link to="/register" className="text-primary-600 hover:text-primary-700 font-semibold">
+              Don't have an account?{" "}
+              <Link
+                to="/register"
+                className="text-primary-600 hover:text-primary-700 font-semibold"
+              >
                 Sign up
               </Link>
             </p>
